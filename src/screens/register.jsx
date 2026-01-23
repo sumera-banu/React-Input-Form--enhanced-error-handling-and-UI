@@ -1,6 +1,7 @@
 import React from "react";
 import { useState} from "react"
 import { useNavigate,useLocation } from "react-router-dom";
+import InputBox from "../components/inputBox";
 
 function Register(){
 
@@ -89,11 +90,8 @@ function Register(){
 <h2>Registration Page</h2>
 
     <form className="page" onSubmit={handleSubmit}>
-     <div className="field">
-       <label>Name:</label><br/>
-      <input className={`text-input ${getError("name") ? "error-input" : ""}`} type="text" name="name" value={formData.name} onChange={handleChange}  />
-        {getError("name") && <p className="error">{getError("name")}</p>}
-      </div>
+     <InputBox label="Name" name="name" value={formData.name} onChange={handleChange} error={getError("name")}/>
+
 
        <div className="field">
         <label>Gender:</label><br/>
@@ -109,11 +107,7 @@ function Register(){
 
       </div>
 
-      <div className="field">
-         <label>Phone Number:</label><br/>
-        <input  className={`text-input ${getError("mobile") ? "error-input" : ""}`}  type="tel" name="mobile" value={formData.mobile} onChange={handleChange} />
-       {getError("mobile") && <p className="error">{getError("mobile")}</p>}
-      </div>
+      <InputBox label="Phone Number" name="mobile" type="tel" value={formData.mobile} onChange={handleChange} error={getError("mobile")}/>
 
       <div className="field">
         <label>City:</label><br/>
